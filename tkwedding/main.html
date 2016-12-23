@@ -116,8 +116,11 @@ function updateRow() {
 	//Set Google Development colsole API key
     gapi.client.setApiKey('AIzaSyDx2fsyILZK4lL_yRQ9OR66axREH5OAFmM');
 	gapi.client.load('fusiontables', 'v2', function () {
-		var updateQry = "UPDATE 1szt5LLtafc_2aTO74S0Txmvbxr9N3CWoIjRZwROt SET Signature = 'aaa', GreetingMessage = '2015/01/01', Date='ssss'";
-		gapi.client.fusiontables.query.sql({ sql: updateQry }).execute(function (response) {
+		var insertQry = "INSERT INTO 1szt5LLtafc_2aTO74S0Txmvbxr9N3CWoIjRZwROt VALUES('"+signature1+
+						"','"+text_area1+"','"+date1+"')";
+
+
+		gapi.client.fusiontables.query.sql({ sql: insertQry }).execute(function (response) {
         	console.log(response);
     	});
     });
