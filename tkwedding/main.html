@@ -36,7 +36,7 @@
     </div>
   </div>
 </nav>
-
+<form id = 'foo'>
 <div id="content">
 
 		<h3> สุขสันต์วันวิวาห์</h3>
@@ -60,11 +60,13 @@
 
 		<div id="visualization_div"></div>
 </div>
+</form>
 
 <div class="footer navbar-fixed-bottom text-center bg-2">
 		<p>© 2016 Suphanut Jamonnak — All rights reserved.</p>
   		<p>Photo Taken By: Nat Hansumrittisak <a href="http://www.nattakan.com/"> nattakan.com </a></p> 
 </div>
+<script src='google-sheet.js'></script>
 
 <!-- function -->
 <script>
@@ -91,18 +93,6 @@ function myFunction() {
     }
 }
 
-function auth() {
-            var config = {
-                'client_id': '509787123611-0329a2joi113tch0vd9dhu2n250hqdvs.apps.googleusercontent.com',
-                'scope': 'https://www.googleapis.com/auth/fusiontables',
-                'immediate': false
-            };
-            gapi.auth.authorize(config, function () {
-                console.log('login complete');
-                console.log(gapi.auth.getToken());
-            });
-}
-
 function updateRow() {
 	var signature1 = arguments[0];
 	var text_area1 = arguments[1];
@@ -110,73 +100,10 @@ function updateRow() {
 	var month = arguments[2].getMonth();
 	var date = arguments[2].getDate();
 	var date1 = year+"-"+month+"-"+date;
-
-	auth();
-
-	//Set Google Development colsole API key
-    //gapi.client.setApiKey('AIzaSyD-7fnC4YfknslmHPn0iIzSYJkMKq3wyzw');
-	gapi.client.load('fusiontables', 'v2', function () {
-		var insertQry = "INSERT INTO 1szt5LLtafc_2aTO74S0Txmvbxr9N3CWoIjRZwROt (Signature, GreetingMessage, Date) VALUES('"+signature1+
-						"','"+text_area1+"','"+date1+"')";
-
-
-		gapi.client.fusiontables.query.sql({ sql: insertQry }).execute(function (response) {
-        	console.log(response);
-    	});
-    });
 }
-
-/*
-function Update_row() {
-            //First authenticate user:
-            auth();
-
-            //Set Google Development colsole API key
-            gapi.client.setApiKey('AIzaSyAnEhw4Y7n5V7bN226wWo0tHs0Bd7jAzxA');
-
-            //Fusion table URL : https://www.google.com/fusiontables/DataSource?docid=1ATc4raFfvVSJriqgIS2qBHE5GQY4wioDA13LrQ5o
-            gapi.client.load('fusiontables', 'v2', function () {
-                var i;
-                for (i = 0; i < 50; i++) {
-
-                    var selectQry = "SELECT ROWID FROM 1ATc4raFfvVSJriqgIS2qBHE5GQY4wioDA13LrQ5o WHERE Number = '" + i + "'";
-
-                    gapi.client.fusiontables.query.sql({ sql: selectQry }).execute(function (response) {
-                        console.log(response);
-
-                        //To get ROWID:
-                        var getRowID = response["rows"][0][0];
-
-
-                        //Update Fusion Table values - Based on selecred ROWID values :
-                        var updateQry = "UPDATE 1ATc4raFfvVSJriqgIS2qBHE5GQY4wioDA13LrQ5o SET col2 = 'aaa', col3='2015/01/01' WHERE ROWID = '" + getRowID + "'";
-                        gapi.client.fusiontables.query.sql({ sql: updateQry }).execute(function (response) {
-                            console.log(response);
-                        });
-                    });
-                }
-            });
-        }*/
-
 </script>
-
-<!-- show all greeting message -->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-    google.charts.load("current", {packages:['table']});
-    google.charts.setOnLoadCallback(drawVisualization);
-    function drawVisualization() {
-      google.visualization.drawChart({
-        "containerId": "visualization_div",
-        "dataSourceUrl": "https://www.google.com/fusiontables/gvizdata?tq=",
-        "query":"SELECT 'Signature', 'GreetingMessage', 'Date' FROM " + "1szt5LLtafc_2aTO74S0Txmvbxr9N3CWoIjRZwROt",
-        "refreshInterval": 5,
-        "chartType": "Table",
-        "options": {}
-     });
-    }
-  </script>
 
 </body>
 </html>
+
 
