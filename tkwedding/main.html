@@ -93,7 +93,7 @@ function myFunction() {
 
 function auth() {
             var config = {
-                'client_id': '297070737301-hhbn6c5g4grmnkjknqku0u0gc138fef3.apps.googleusercontent.com',
+                'client_id': '240545577342-dbm3heiu7e7aobfokpdh9o6cb2d9dnkt.apps.googleusercontent.com',
                 'scope': 'https://www.googleapis.com/auth/fusiontables',
                 'immediate': false
             };
@@ -114,7 +114,7 @@ function updateRow() {
 	auth();
 
 	//Set Google Development colsole API key
-    //gapi.client.setApiKey('AIzaSyDx2fsyILZK4lL_yRQ9OR66axREH5OAFmM');
+    gapi.client.setApiKey('AIzaSyD-7fnC4YfknslmHPn0iIzSYJkMKq3wyzw');
 	gapi.client.load('fusiontables', 'v2', function () {
 		var insertQry = "INSERT INTO 1szt5LLtafc_2aTO74S0Txmvbxr9N3CWoIjRZwROt (Signature, GreetingMessage, Date) VALUES('"+signature1+
 						"','"+text_area1+"','"+date1+"')";
