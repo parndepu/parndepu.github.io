@@ -5,7 +5,7 @@ var request;
 $("#foo").submit(function(event){
 
     console.log($('#Signature').val()+" "+$('#Greeting').val());
-    if($('#Signature').val() == null || $('#Greeting').val().length <= 0 ){
+    if($('#Signature').val().length <= null || $('#Greeting').val().length <= 0 ){
         console.log("empty");
     }else{
         console.log("not empty");
