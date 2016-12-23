@@ -4,6 +4,7 @@ var request;
 // Bind to the submit event of our form
 $("#foo").submit(function(event){
 
+    console.log($("#Signature").value);
     if($("#Signature").value == null || $("#Greeting").value.lengths === 0 ){
         console.log("empty");
     }else{
