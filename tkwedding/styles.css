@@ -90,3 +90,9 @@
     text-align: center;
     letter-spacing: 2.5px;
   }
+
+  img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  }
