@@ -4,6 +4,12 @@ var request;
 // Bind to the submit event of our form
 $("#foo").submit(function(event){
 
+    if($("#Signature").value == null || $("#Greeting").value.lengths === 0 ){
+        console.log("empty");
+    }else{
+        console.log("not empty");
+    }
+
     // Abort any pending request
     if (request) {
         request.abort();
