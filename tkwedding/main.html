@@ -47,12 +47,12 @@
 			</div>
 			
 			<div class="form-group">
-	  			<textarea class="form-control noresize" id="greeting" autofocus></textarea>
+	  			<textarea class="form-control noresize" id="Greeting" name="Greeting" autofocus></textarea>
 			</div>
 			
 			<div class="form-group">
 			ลงชื่อ (signature)
-			<input type="text" class="form-control noresize" id="username">
+			<input type="text" class="form-control noresize" id="Signature" name="Signature">
 			</div>
 
 			<input type="submit" class="btn btn-info" onclick="myFunction()" value="ส่งข้อความ">
@@ -78,9 +78,7 @@ function myFunction() {
     text_area = document.getElementById("greeting").value;
     signature = document.getElementById("username").value;
 
-   	var letters = /^[A-Za-z]+$/;
-
-   	if(signature.match(letters) && text_area && signature)  
+   	if(text_area && signature)  
     {
     	//sent to database
     	updateRow(signature,text_area,new Date());
