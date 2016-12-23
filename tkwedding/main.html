@@ -55,7 +55,7 @@
 			<input type="text" class="form-control noresize" id="Signature" name="Signature">
 			</div>
 
-			<input type="submit" class="btn btn-info" onclick="myFunction()" value="ส่งข้อความ">
+			<input type="submit" class="btn btn-info" value="ส่งข้อความ">
 			<p id="demo"></p>
 
 			<div id="visualization_div"></div>
@@ -67,28 +67,6 @@
   		<p>Photo Taken By: Nat Hansumrittisak <a href="http://www.nattakan.com/"> nattakan.com </a></p> 
 </div>
 <script src='google-sheet.js'></script>
-
-<!-- function -->
-<script>
-function myFunction() {
-
-    var signature, text_area, output;
-
-    //Get the value of text area
-    text_area = document.getElementById("Greeting").value;
-    signature = document.getElementById("Signature").value;
-
-   	if(text_area == null || signature == null || text_area.length === 0 || signature.length === 0)
-    {
-    	document.getElementById("message").innerHTML = "<font color=\"red\"><h4>กรุณากรอกข้อมูลให้ครบถ้วน<h4><h5>Please fill out the form<h5></font>";
-    }  
-   	else  
-    {
-    	document.getElementById("content").innerHTML = "<h3> ขอบคุณที่ร่วมอวยพร</h3><h3>Happy Holidays and Merry Christmas!</h3>"
-    }
-}
-</script>
-
 </body>
 </html>
 
