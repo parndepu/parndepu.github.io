@@ -1,0 +1,89 @@
+
+  body {
+      overflow: hidden;
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+      background: url(images/tk_bg1.jpg);
+      background-size: 100% 100%;
+      /*background-repeat: no-repeat;*/
+      background-size:cover;
+
+  }
+   
+  #content {
+        max-height: calc(100% - 120px);
+        overflow-y: scroll;
+        padding: 0px 10% !important;
+        margin-top: 70px !important;
+  }
+
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  p {font-size: 12px;line-height: 1;}
+  .bg-1 { 
+      background-color: #1abc9c; /* Green */
+      color: #f5f6f7;
+  }
+  .bg-2 { 
+      background-color: #474e5d; /* Dark Blue */
+      color: #ffffff;
+  }
+  .bg-3 { 
+      background-color: #ffffff; /* White */
+      color: #555555;
+  }
+  .bg-4 { 
+      background-color: #2f2f2f; /* Black Gray */
+      color: #ffffff;
+  }
+  .container-fluid {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      min-height:0px !important;
+      color: #464646 !important;
+      letter-spacing: 5px;
+  }
+
+  .navbar {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+      color: #464646 !important;
+  }
+  .navbar-brand  li a:hover {
+      color: #464646 !important;
+  }
+  .footer {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  textarea {
+    min-height:110px;
+  }
+
+  .noresize {
+    resize: none; 
+    opacity: 0.5;
+    color: Black;
+    border-color: Black;
+    border-style: solid;
+    border-width: 2px;
+    font-family: Times-Italic;
+    font-size: 19px;
+    text-align: center;
+    letter-spacing: 2.5px;
+  }
