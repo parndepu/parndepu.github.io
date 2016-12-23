@@ -75,29 +75,17 @@ function myFunction() {
     var signature, text_area, output;
 
     //Get the value of text area
-    text_area = document.getElementById("greeting").value;
-    signature = document.getElementById("username").value;
+    text_area = document.getElementById("Greeting").value;
+    signature = document.getElementById("Signature").value;
 
-   	if(text_area && signature)  
+   	if(text_area == null || signature == null || text_area.length === 0 || signature.length === 0)
     {
-    	//sent to database
-    	updateRow(signature,text_area,new Date());
-    	document.getElementById("content").innerHTML = "<h3> ขอบคุณที่ร่วมอวยพร</h3><h3>Happy Holidays and Merry Christmas!</h3>"
-    	// add back to main page
+    	document.getElementById("message").innerHTML = "<font color=\"red\"><h4>กรุณากรอกข้อมูลให้ครบถ้วน<h4><h5>Please fill out the form<h5></font>";
     }  
    	else  
     {
-    	document.getElementById("message").innerHTML = "<font color=\"red\"><h4>กรุณากรอกข้อมูลให้ครบถ้วน<h4><h5>Please fill out the form<h5></font>";
+    	document.getElementById("content").innerHTML = "<h3> ขอบคุณที่ร่วมอวยพร</h3><h3>Happy Holidays and Merry Christmas!</h3>"
     }
-}
-
-function updateRow() {
-	var signature1 = arguments[0];
-	var text_area1 = arguments[1];
-	var year = arguments[2].getFullYear();
-	var month = arguments[2].getMonth();
-	var date = arguments[2].getDate();
-	var date1 = year+"-"+month+"-"+date;
 }
 </script>
 
