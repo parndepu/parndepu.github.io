@@ -16,7 +16,7 @@ $(document).ready(function(){
                     request.abort();
                 }
                 // setup some local variables
-                var $form = $(this);
+                var $form = $('#foo');
 
                 // Let's select and cache all the fields
                 var $inputs = $form.find("input, select, button, textarea");
