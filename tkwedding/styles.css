@@ -1,6 +1,5 @@
 
   body {
-      overflow: hidden;
       font: 12px Montserrat, sans-serif;
       line-height: 1.8;
       color: #f5f6f7;
@@ -8,21 +7,17 @@
       background-size: 100% 100%;
       /*background-repeat: no-repeat;*/
       background-size:cover;
-
   }
    
   #content {
-        max-height: calc(100% - 200px);
-        overflow-y: scroll;
-        padding: 0px 10% !important;
+        width: 80%;
         margin: 0 auto;
-        margin-top: 70px !important;
+        padding: 70px 0;
         line-height: 20px;
         text-align: center;
         color: #464646 !important;
         letter-spacing: 5px;
   }
-
 
   html, body {
     height: 100%;
@@ -30,8 +25,10 @@
     margin: 0;
     padding: 0;
   }
+
   h3 {font-family: "Pacifico";}
   p {font-size: 8px;line-height: 1;}
+  
   .bg-1 { 
       background-color: #1abc9c; /* Green */
       color: #f5f6f7;
