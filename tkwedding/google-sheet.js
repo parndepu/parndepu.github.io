@@ -43,6 +43,7 @@ $(document).ready(function(){
                     console.log(response);
                     console.log(textStatus);
                     console.log(jqXHR);
+                    $('#content').html('<h2>ขอบคุณครับ</h2><br/><h3>Happy Holidays</h3><h3>&<h3/><h3>Merry Christmas</h3><br/><a href="http://parndepu.github.io/tkwedding/main.html" class="btn btn-success" role="button"><font color="black">กลับไปหน้าหลัก</font></a>');
                 });
 
                 // Callback handler that will be called on failure
@@ -63,7 +64,6 @@ $(document).ready(function(){
 
                 // Prevent default posting of form
                 event.preventDefault();
-                $('#content').html('<h2>ขอบคุณครับ</h2><br/><h3>Happy Holidays</h3><h3>&<h3/><h3>Merry Christmas</h3><br/><a href="http://parndepu.github.io/tkwedding/main.html" class="btn btn-success" role="button"><font color="black">กลับไปหน้าหลัก</font></a>');
         }
     });
 });
