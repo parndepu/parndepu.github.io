@@ -5,7 +5,7 @@
       color: #f5f6f7;
       background: url(https://parndepu.github.io/tkwedding/images/tk_bg1.JPG);
       background-size: 100% 100%;
-      /*background-repeat: no-repeat;*/
+      background-repeat: no-repeat;
       background-size:cover;
   }
    
@@ -28,7 +28,7 @@
 
   h3 {font-family: "Pacifico";}
   p {font-size: 8px;line-height: 1;}
-  
+
   .bg-1 { 
       background-color: #1abc9c; /* Green */
       color: #f5f6f7;
