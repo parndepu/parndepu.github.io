@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Pacifico:400" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://apis.google.com/js/client.js"></script>
   <!-- styles.css -->
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -23,7 +24,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">ถั่ว • ก้อย</a>
+      <a class="navbar-brand" href="http://parndepu.github.io/tkwedding/main.html">ถั่ว • ก้อย</a>
     </div>
 
     <div class="collapse navbar-collapse" id="myNavbar">
@@ -37,21 +38,27 @@
 </nav>
 
 <div id="content">
+
 		<h3> สุขสันต์วันวิวาห์</h3>
 		<h3>Tua & Koi Wedding</h3>
-		โปรดกรอกคำอวยพร<br/>
-		เพื่อร่วมเเสดงความยินดี<br/><br/>
+		<div id="message">
+			โปรดกรอกคำอวยพร<br/>
+			เพื่อร่วมเเสดงความยินดี<br/><br/>
+		</div>
 		
 		<div class="form-group">
   			<textarea class="form-control noresize" id="greeting" autofocus></textarea>
 		</div>
 		
 		<div class="form-group">
-		ลงชื่อ (signature)<input type="text" class="form-control noresize" id="username">
+		ลงชื่อ (signature)
+		<input type="text" class="form-control noresize" id="username">
 		</div>
 
 		<input type="submit" class="btn btn-info" onclick="myFunction()" value="ส่งข้อความ">
 		<p id="demo"></p>
+
+		<div id="visualization_div"></div>
 </div>
 
 <div class="footer navbar-fixed-bottom text-center bg-2">
@@ -63,20 +70,109 @@
 <script>
 function myFunction() {
 
-    var x, text;
+    var signature, text_area, output;
 
-    // Get the value of the input field with id="numb"
-    x = document.getElementById("numb").value;
+    //Get the value of text area
+    text_area = document.getElementById("greeting").value;
+    signature = document.getElementById("username").value;
 
-    // If x is Not a Number or less than one or greater than 10
-    if (isNaN(x) || x < 1 || x > 10) {
-        text = "Input not valid";
-    } else {
-        text = "Input OK";
+   	var letters = /^[A-Za-z]+$/;
+
+   	if(signature.match(letters) && text_area && signature)  
+    {
+    	//sent to database
+    	updateRow(signature,text_area,new Date());
+    	document.getElementById("content").innerHTML = "<h3> ขอบคุณที่ร่วมอวยพร</h3><h3>Happy Holidays and Merry Christmas!</h3>"
+    	// add back to main page
+    }  
+   	else  
+    {
+    	document.getElementById("message").innerHTML = "<font color=\"red\"><h4>กรุณากรอกข้อมูลให้ครบถ้วน<h4><h5>Please fill out the form<h5></font>";
     }
-    document.getElementById("demo").innerHTML = text;
 }
+
+function auth() {
+            var config = {
+                'client_id': '297070737301-e7h0o621s4ovcilnege4pg8t7au4goha.apps.googleusercontent.com',
+                'scope': 'https://www.googleapis.com/auth/fusiontables',
+                'immediate': false
+            };
+            gapi.auth.authorize(config, function () {
+                console.log('login complete');
+                console.log(gapi.auth.getToken());
+            });
+}
+
+function updateRow() {
+	var signature1 = arguments[0];
+	var text_area1 = arguments[1];
+	var year = arguments[2].getFullYear();
+	var month = arguments[2].getMonth();
+	var date = arguments[2].getDate();
+	var date1 = year+"-"+month+"-"+date;
+
+	auth();
+
+	//Set Google Development colsole API key
+    gapi.client.setApiKey('AIzaSyDx2fsyILZK4lL_yRQ9OR66axREH5OAFmM');
+	gapi.client.load('fusiontables', 'v2', function () {
+		var updateQry = "UPDATE 1szt5LLtafc_2aTO74S0Txmvbxr9N3CWoIjRZwROt SET Signature = 'aaa', Greeting Message='2015/01/01', Date='ssss'";
+		gapi.client.fusiontables.query.sql({ sql: updateQry }).execute(function (response) {
+        	console.log(response);
+    	});
+    });
+}
+
+/*
+function Update_row() {
+            //First authenticate user:
+            auth();
+
+            //Set Google Development colsole API key
+            gapi.client.setApiKey('AIzaSyAnEhw4Y7n5V7bN226wWo0tHs0Bd7jAzxA');
+
+            //Fusion table URL : https://www.google.com/fusiontables/DataSource?docid=1ATc4raFfvVSJriqgIS2qBHE5GQY4wioDA13LrQ5o
+            gapi.client.load('fusiontables', 'v2', function () {
+                var i;
+                for (i = 0; i < 50; i++) {
+
+                    var selectQry = "SELECT ROWID FROM 1ATc4raFfvVSJriqgIS2qBHE5GQY4wioDA13LrQ5o WHERE Number = '" + i + "'";
+
+                    gapi.client.fusiontables.query.sql({ sql: selectQry }).execute(function (response) {
+                        console.log(response);
+
+                        //To get ROWID:
+                        var getRowID = response["rows"][0][0];
+
+
+                        //Update Fusion Table values - Based on selecred ROWID values :
+                        var updateQry = "UPDATE 1ATc4raFfvVSJriqgIS2qBHE5GQY4wioDA13LrQ5o SET col2 = 'aaa', col3='2015/01/01' WHERE ROWID = '" + getRowID + "'";
+                        gapi.client.fusiontables.query.sql({ sql: updateQry }).execute(function (response) {
+                            console.log(response);
+                        });
+                    });
+                }
+            });
+        }*/
+
 </script>
+
+<!-- show all greeting message -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['table']});
+    google.charts.setOnLoadCallback(drawVisualization);
+    function drawVisualization() {
+      google.visualization.drawChart({
+        "containerId": "visualization_div",
+        "dataSourceUrl": "http://www.google.com/fusiontables/gvizdata?tq=",
+        "query":"SELECT 'Signature', 'Greeting Message', 'Date' FROM " + "1szt5LLtafc_2aTO74S0Txmvbxr9N3CWoIjRZwROt",
+        "refreshInterval": 5,
+        "chartType": "Table",
+        "options": {}
+     });
+    }
+  </script>
 
 </body>
 </html>
